@@ -133,11 +133,9 @@ def exam_1_v1_2():
 			maxv = iter
 	print ('Number = ',maxi,' iter = ',maxv)
 
-
 def exam_2_v1():
 	slov = {1 : 0}
-#	digit = int (input( ' enter lim numbers '))
-	digit = 10 ** 6
+	digit = int (input( ' enter lim numbers '))
 	print ('digit = ', digit)
 	for i in range (2, digit):
 		iter = 0
@@ -160,14 +158,11 @@ def exam_2_v1():
 			maxv = slov.get(i)
 	print ('Number = ',maxi,' iter = ',maxv)
 
-
-
 def exam_2_v2():
-#	digit = int (input( ' enter lim numbers '))
+	digit = int (input( ' enter lim numbers '))
 	slov = {1 : 0}
 	maxi = 1
 	maxv = 0
-	digit = 10 ** 6
 	print ('digit = ', digit)
 	for i in range (2, digit):
 		iteration = 0
@@ -188,6 +183,26 @@ def exam_2_v2():
 	print ('Number = ',maxi,' iter = ',maxv)
 
 
+def table_mul():
+	vari = ['a' , 'b', 'c' , 'd']
+	for _ in range(4):
+		print (' enter var ', vari[_], ' ',end = '')
+		vari[_] = int (input ())
+	print (vari)
+	for _ in range (vari[0],vari[1]+1):
+		print ('\t', _ , '', end = '' )
+	print ()
+	for i in range (vari[2],vari[3]+1):
+		print (i,'', end = '' )
+		for j in range (vari[0],vari[1]+1):
+			print ('\t', i*j , '', end = '' ) 
+		print ()
+
+
+def exam_task2():
+	pass
+
+
 def main():
 #	sumdigit1()			#for 	for
 #	sumdigit2()			#while  for
@@ -196,7 +211,9 @@ def main():
 #	exam_1_v1()			# digit =  1000000  Number =  837799 iter =  524 [Finished in 24.4s]
 #	exam_1_v1_2()		# digit =  1000000  Number =  837799 iter =  524 [Finished in 21.6s]
 #	exam_2_v1()			# digit =  1000000  Number =  837799 iter =  524 [Finished in 1.4s]
-	exam_2_v2()			#digit =  10000000  Number =  8400511 iter =  685 [Finished in 13.0s]
+#	exam_2_v2()			#digit =  10000000  Number =  8400511 iter =  685 [Finished in 13.0s]
+#	table_mul()
+	exam_task2()
 
 if __name__ == '__main__':
    main()
