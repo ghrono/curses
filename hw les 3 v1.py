@@ -133,7 +133,7 @@ def exam_1_v1_2():
 			maxv = iter
 	print ('Number = ',maxi,' iter = ',maxv)
 
-def exam_2_v1():
+def exam_1_v2():
 	slov = {1 : 0}
 	digit = int (input( ' enter lim numbers '))
 	print ('digit = ', digit)
@@ -158,12 +158,13 @@ def exam_2_v1():
 			maxv = slov.get(i)
 	print ('Number = ',maxi,' iter = ',maxv)
 
-def exam_2_v2():
-	digit = int (input( ' enter lim numbers '))
+def exam_1_v2_2():
+#	digit = int (input( ' enter lim numbers '))
+	digit = 10 ** 2
 	slov = {1 : 0}
 	maxi = 1
 	maxv = 0
-	print ('digit = ', digit)
+#	print ('digit = ', digit)
 	for i in range (2, digit):
 		iteration = 0
 		numb = i
@@ -183,6 +184,25 @@ def exam_2_v2():
 	print ('Number = ',maxi,' iter = ',maxv)
 
 
+def exam_1_v3():
+	digit = 10 ** 6
+	raw_list = [0]
+	for number in range (2, digit):
+		raw_list.append(0)
+		iteration = number
+		while iteration > 1:
+			raw_list[-1] += 1
+			if not iteration % 2:
+				iteration /= 2
+				if iteration < number:
+					raw_list[-1] += raw_list[ int( iteration) -1]
+					break
+			else:
+				iteration = iteration * 3 + 1
+	m = raw_list.index(max(raw_list))
+	print ('Number = ',m,' trajectory = ', raw_list[m] )
+
+
 def table_mul():
 	vari = ['a' , 'b', 'c' , 'd']
 	for _ in range(4):
@@ -198,9 +218,31 @@ def table_mul():
 			print ('\t', i*j , '', end = '' ) 
 		print ()
 
+def exam_task2():   
 
-def exam_task2():
-	pass
+	#li = {'hes' : ['count', ['date1','date2']]}
+	li = {}
+	#{'hes' : ['count', ['date1']]}
+	rawfile = open('/tmp/zdf-win-utf8.txt')
+	for line in rawfile:
+		if len(line) > 3:
+			key = str (sorted(line[:-1:]))
+			st = [1,]
+			if  key in li:
+				li.get(key)[0] +=1
+				li.get(key).append(line[:-1:])
+			else:
+				li[key] = st
+				li.get(key).append(line[:-1:])
+	
+	st = li.values()
+	sorted (st , key ='' )
+	count = 0
+	for i in st:
+		if i[0] != 1:
+#			print (li.get(i))
+			count += 1
+	print (count)
 
 
 def main():
@@ -210,10 +252,12 @@ def main():
 #	sumdigit4()			#while  while
 #	exam_1_v1()			# digit =  1000000  Number =  837799 iter =  524 [Finished in 24.4s]
 #	exam_1_v1_2()		# digit =  1000000  Number =  837799 iter =  524 [Finished in 21.6s]
-#	exam_2_v1()			# digit =  1000000  Number =  837799 iter =  524 [Finished in 1.4s]
-#	exam_2_v2()			#digit =  10000000  Number =  8400511 iter =  685 [Finished in 13.0s]
+#	exam_1_v1()			# digit =  1000000  Number =  837799 iter =  524 [Finished in 1.4s]
+#	exam_1_v2_2()			#digit =  10000000  Number =  8400511 iter =  685 [Finished in 13.0s]
 #	table_mul()
-	exam_task2()
+#	exam_task2()
+	exam_1_v3()
+
 
 if __name__ == '__main__':
    main()
