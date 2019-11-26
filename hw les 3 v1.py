@@ -164,7 +164,6 @@ def exam_1_v2_2():
 	slov = {1 : 0}
 	maxi = 1
 	maxv = 0
-#	print ('digit = ', digit)
 	for i in range (2, digit):
 		iteration = 0
 		numb = i
@@ -185,22 +184,23 @@ def exam_1_v2_2():
 
 
 def exam_1_v3():
-	digit = 10 ** 6
-	raw_list = [0]
+	digit = int (input( ' enter lim numbers '))
+	trajectory_list = [0]
 	for number in range (2, digit):
-		raw_list.append(0)
-		iteration = number
-		while iteration > 1:
-			raw_list[-1] += 1
-			if not iteration % 2:
-				iteration /= 2
-				if iteration < number:
-					raw_list[-1] += raw_list[ int( iteration) -1]
-					break
-			else:
-				iteration = iteration * 3 + 1
-	m = raw_list.index(max(raw_list))
-	print ('Number = ',m,' trajectory = ', raw_list[m] )
+	    trajectory_list.append(0)
+	    trajectory = number
+	    while trajectory > 1:
+	        trajectory_list[-1] += 1
+	        if not trajectory % 2:
+	            trajectory /= 2
+	            if trajectory < number:
+	                trajectory_list[-1] += trajectory_list[ int( trajectory) -1]
+	                break
+	        else:
+	            trajectory = trajectory * 3 + 1
+
+	m = trajectory_list.index(max(trajectory_list))
+	print ('Digit = ',m,' trajectory = ',trajectory_list[m] )
 
 
 def table_mul():
@@ -224,8 +224,9 @@ def exam_task2():
 	li = {}
 	#{'hes' : ['count', ['date1']]}
 	rawfile = open('/tmp/zdf-win-utf8.txt')
+	rawfile = sorted (rawfile )
 	for line in rawfile:
-		if len(line) > 3:
+		if len(line) > 2:
 			key = str (sorted(line[:-1:]))
 			st = [1,]
 			if  key in li:
@@ -236,13 +237,43 @@ def exam_task2():
 				li.get(key).append(line[:-1:])
 	
 	st = li.values()
-	sorted (st , key ='' )
+	st = sorted (st, key = lambda item: -item[0] )
 	count = 0
 	for i in st:
 		if i[0] != 1:
-#			print (li.get(i))
 			count += 1
+			print (i)
 	print (count)
+
+def exam_task2_v1():   
+
+	#li = {'hes' : ['count', ['date1','date2']]}
+	li = {}
+	#{'hes' : ['count', ['date1']]}
+	rawfile = open('/tmp/zdf-win-utf8.txt')
+	file = sorted (rawfile )
+	for line in file:
+#		if len(line) > 2:
+			key = str (sorted(line[:-1:]))
+			st = [1,]
+			if  key in li:
+				li.get(key)[0] +=1
+				li.get(key).append(line[:-1:])
+			else:
+				li[key] = st
+				li.get(key).append(line[:-1:])
+	
+	st = li.values()
+	st = sorted (st, key = lambda item: -item[0] )
+	count = 0
+	for i in st:
+		if i[0] > 1:
+			count += 1
+			print (i)
+		else:
+			break
+	print (count)
+	
 
 
 def main():
@@ -256,7 +287,8 @@ def main():
 #	exam_1_v2_2()			#digit =  10000000  Number =  8400511 iter =  685 [Finished in 13.0s]
 #	table_mul()
 #	exam_task2()
-	exam_1_v3()
+#	exam_1_v3()
+	exam_task2_v1()
 
 
 if __name__ == '__main__':
