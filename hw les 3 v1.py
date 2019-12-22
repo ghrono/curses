@@ -285,10 +285,10 @@ def main():
 #	exam_1_v1_2()		# digit =  1000000  Number =  837799 iter =  524 [Finished in 21.6s]
 #	exam_1_v1()			# digit =  1000000  Number =  837799 iter =  524 [Finished in 1.4s]
 #	exam_1_v2_2()			#digit =  10000000  Number =  8400511 iter =  685 [Finished in 13.0s]
-#	table_mul()
+	table_mul()
 #	exam_task2()
 #	exam_1_v3()
-	exam_task2_v1()
+#	exam_task2_v1()
 
 
 if __name__ == '__main__':
