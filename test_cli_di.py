@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.8
-
+import redis
 from os import listdir
 from socket import socket
 import netifaces
@@ -73,11 +73,21 @@ def clie():
 
 	client.close()
 
+def get_list_author_name():
+	r_db = redis.Redis(host = 'localhost', port = 6379)
+	list_author_name = []
+	for author_name in r_db.keys('*'):
+		list_author_name.append(author_name.decode('utf-8'))
+	return list_author_name
+
+
 
 def main():
 	print ('Ip address server : ', get_ip())
-	clie()
-
+#	clie()
+	li = get_list_author_name()
+	for l in li:
+		print (l)
 
 if __name__ == '__main__':
 	main()

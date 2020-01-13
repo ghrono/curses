@@ -128,14 +128,22 @@ def example5():
 
 	send_msg()
 
+def make_str_request(x, y = '', z = ''):
+	request = x + '##' + y + '##' + z + '##'
+	return request
+
 
 def main():
 #	example1()
 #	example2()
 #	example5()
 
+	st = 'foo##bar'
+	print (st.split('##')[1])
 
-
+	print (make_str_request('foo', 'bar'))
+	print (make_str_request('foo', 'bar').split('##'))
+		
 
 if __name__ == '__main__':
 	main()

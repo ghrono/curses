@@ -39,26 +39,35 @@ def init_connect_2_srv():
 	socket4connect.connect((get_ip(), 9090))
 	return socket4connect
 
+def make_str_request(x, y = '', z = ''):
+	request = x + '##' + y + '##' + z + '##'
+	return request
+
 def get_author_in_lib(socket4connect):
-	send_request('GET_LIST_AUTHOR', socket4connect)
+	request = make_str_request ('GET_LIST_AUTHOR')
+	send_request(request, socket4connect)
 	response_list_author = get_response(socket4connect)
 	return response_list_author
 
 def get_books_one_author(author_name, socket4connect):
-	send_request('GET_LIST_BOOKS' + '##' + author_name, socket4connect)
+	request = make_str_request ('GET_LIST_BOOKS', author_name)
+	send_request(request, socket4connect)
 	response_books_author = get_response(socket4connect)
 	return response_books_author
 
 def get_one_book(author_name, book_name, socket4connect):
-	send_request('GET_BOOK' + '##' + author_name + '##' + book_name, socket4connect)
+	request = make_str_request ('GET_BOOK', author_name, book_name)
+	send_request(request, socket4connect)
 	response_book = get_response(socket4connect)
 	return response_book
 
 
 def client():
 	connect_2_srv = init_connect_2_srv()
-	li = get_author_in_lib(connect_2_srv)
-	print (li)
+	li = get_author_in_lib(connect_2_srv).split(',')
+	
+	for blb in li:
+		print (blb.split("'"))
 	connect_2_srv.close()
 
 
